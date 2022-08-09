@@ -86,12 +86,15 @@ Rachna Umaraniya, Cloud Developer, INE <rumaraniya@ine.com>
 
 Sherin Stephen, Software Engineer (Cloud), INE <sstephen@ine.com>
 
+Shantanu Kale, Cloud Developer, INE <skale@ine.com>
+
+Sanjeev Mahunta, Software Engineer (Cloud), INE <smahunta@ine.com>
 
 # Solutions
 
 The manuals are available in the [solutions](solutions/) directory 
 
-Module 1 Exploitation Videos: 
+Module 1 Exploitation Videos: https://www.youtube.com/playlist?list=PLcIpBb4raSZGdYHKpqIu5Boc2ziga4oGY 
 
 # Documentation
 
