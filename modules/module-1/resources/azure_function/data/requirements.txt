@@ -1,0 +1,9 @@
+# Do not include azure-functions-worker as it may conflict with the Azure Functions platform
+
+# Minimum packages for azure functions
+
+# Additional packages
+azure-cosmos==4.3.0
+azure-storage-blob==12.12.0
+bcrypt==3.2.2
+pyjwt==1.7.1

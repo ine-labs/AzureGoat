@@ -1,0 +1,13 @@
+*.js.map
+*.ts
+.git*
+.vscode
+.devcontainer/*
+.editorconfig
+.env.example
+.eslintignore
+.eslintrc.js
+.gitignore
+.prettierrc
+local.settings.json
+terraform/*
