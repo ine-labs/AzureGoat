@@ -61,7 +61,9 @@ az login
 
 And follow the steps to sign in.
 
-**Step 3.** Use terraform to deploy AzureGoat
+**Step 3.** Create a resource group with the name "azuregoat_app".
+
+**Step 4.** Use terraform to deploy AzureGoat
 
 ```sh
 terraform init
