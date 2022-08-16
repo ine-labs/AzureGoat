@@ -4,13 +4,22 @@ Access CosmosDB and Storage Accounts by leveraging the SSRF Vulnerability.
 
 # Solution
 
+A Server-Side Request Forgery (SSRF) attack involves an attacker abusing server functionality to access or modify resources. 
+
+While creating a new post from the web application, there exists a feature to upload an image from a URL. This input field supports file protocol that allows the user to read the local files from the function app which will lead to an SSRF attack.
+
+For accessing cosmos DB and storage accounts, we need to have connection strings. In this attack, we will export all the data from the `local.settings.json` file.
+
+local.settings.json is for testing Azure Function locally on your machine. When deployed to Azure, you will set the environment variables in  Application Settings under the function app. So when a developer publishes the function app from the local environment, local.settings.json is also uploaded to the deployed app which has all the credentials for the working application and hence it will be accessible through the SSRF attack.
+
+
+
 ### Open the web application, click on "Get Started" and create a new account.
 
 ![](https://user-images.githubusercontent.com/65826354/183737518-9636cd66-8f8b-4b02-8895-fb2ef6a28ba9.png)
 
 Fill in the details and create a new account.
 
-![](https://user-images.githubusercontent.com/65826354/183737523-e807de5e-05ac-4699-a277-22de8088c4b5.png)
 
 ![](https://user-images.githubusercontent.com/65826354/183737533-7db7a3fa-8d6b-4c59-9237-10c1bc1322b5.png)
 
@@ -24,25 +33,27 @@ Now, click on the "Register" and log in using the new credentials.
 
 Now, you have access to the web application.
 
-### From the sidebar, select Newpost.
+### From the side navigation bar, select Newpost.
+
+Go to the web application, and from the side navigation menu, select "Newpost".
 
 ![](https://user-images.githubusercontent.com/65826354/183737555-61b21043-d83d-438d-943f-fec0bb50b4e0.png)
 
-Enter any headline for the post, and fill in the Author Name.
 
-In the "Enter URL of image" field, write down the below-mentioned SSRF payload to get the /etc/passwd file from the app function execution environment.
+Open the developer tools console and enter the URL of the image as mentioned below and click on upload.
 
-Payload:
+**Note:** If you are using Firefox, you have to reload the tab by clicking reload button.
+
+
+**Payload:**
 
 ```
 file:///etc/passwd/
 ```
 
-![](https://user-images.githubusercontent.com/65826354/183737555-61b21043-d83d-438d-943f-fec0bb50b4e0.png)
+The /etc/passwd file is the most important file in Linux operating system. This file stores essential information about the users on the system. Getting this file as a response will confirm the SSRF vulnerability.
 
-### Go to inspect elements and click on the upload button.
-
-A right-click and click on "inspect elements" and open the "Network" tab. After that, click on the "Upload" button. 
+<!-- ![](https://user-images.githubusercontent.com/65826354/183737555-61b21043-d83d-438d-943f-fec0bb50b4e0.png) -->
 
 ![](https://user-images.githubusercontent.com/65826354/183737572-13c80a32-48f8-4237-bfc2-f52e441dda52.png)
 
@@ -50,9 +61,9 @@ You will get a pop-up saying, "URL File uploaded successfully". After that, open
 
 ![](https://user-images.githubusercontent.com/65826354/183737585-9897592d-7f2c-4305-b0e3-90106f5a7c8d.png)
 
-### Download the data and try to open it.
+### Download the file and try to open it.
 
-After the successful download of data, you will find that the data is in .png format.
+After the successful download of file, you will find that the file is in .png format.
 
 ![](https://user-images.githubusercontent.com/65826354/183737592-914855aa-4e42-4b6b-8b45-8af70c1f219c.png)
 
@@ -61,13 +72,15 @@ After the successful download of data, you will find that the data is in .png fo
 
 Open the terminal and view the content of the ``/etc/passwd/`` file.
 
-Command:
+**Command:**
 
 ```bash
 cat <File_Name>
 ```
 
-eg. 
+Here we have the file name as `20220808114951907112.png`. So the command will be the following.
+
+**Command:**
 
 ```bash
 cat 20220808114951907112.png
@@ -77,39 +90,52 @@ cat 20220808114951907112.png
 
 We successfully got the ``/etc/passwd/`` file.
 
-### Now, we will try to fetch the */local.settings.json* file
+### Now, we will try to fetch the */local.settings.json* file.
 
 The local.settings.json file contains the environment variable referenced by the app function environment. This can have extremely sensitive data like access credentials and connection strings.
 
 Enter the payload into the "Enter URL of the image" section, and hit upload.
+
+The location `/home/site/wwwroot/` contains all the function app files. So to access the local.settings.json the path will be the following.
 
 Payload:
 ```
 file:///home/site/wwwroot/local.settings.json
 ```
 
-Now, copy the URL from the response and download the ``/local.settings.json`` file.
+
+Now, copy the URL from the response and download the ``local.settings.json`` file.
 
 ![](https://user-images.githubusercontent.com/65826354/183737610-84831db5-5e1d-4eeb-aa3f-3346b45371f3.png)
 
 ![](https://user-images.githubusercontent.com/65826354/183737620-b9092b44-fcad-4d4b-b5a5-08307fa6f648.png)
 
-### List the content of the */local.settings.json* file.
+### List the content of the *local.settings.json* file.
 
 Open the terminal and use the "cat" command to list the file's content.
 
-Command:
+**Command:**
+
+```bash
+cat <File_Name>
 ```
-cat <FileName>
+Here we have the file name as `20220808115206011087.png`. So the command will be the following.
+
+**Command:**
+
+```bash
+cat 20220808115206011087.png
 ```
 
 ![](https://user-images.githubusercontent.com/65826354/183737643-5e66caaf-7d99-4a7e-9591-6cd5cadb9af6.png)
 
-### Open  VSCode text editor and install the Azure Databases extension.
+### Open the VSCode text editor and install the Azure Databases extension.
+
+Azure databases extension in vscode is used to browse and query your Azure databases both locally and in the cloud. Through this method, we can attach azure cosmosdb in the workspace and perform operations on it.
 
 ![](https://user-images.githubusercontent.com/65826354/183737654-f8550a24-513d-4742-8f4a-35bc3e56fdf9.png)
 
-### Configure the Azure database account with your local machine
+### Configure the Azure database account with your local machine.
 
 Click on "Attach Database Account" and enter the "AccountEndpoint" and "AccountKey" from the ``local.settings.json`` file.
 
@@ -119,7 +145,11 @@ From the ``local.settings.json`` file, copy the "AccountEndpoint" and "AccountKe
 
 ![](https://user-images.githubusercontent.com/65826354/183737675-6ba5dabc-3765-4bcc-8835-fc176e5eaebe.png)
 
-Now, make a connection string as shown in the image below.
+Now, make a connection string with the format: 
+
+```
+AccountEndpoint=<AZ_DB_ENDPOINT>;AccountKey=<AZ_DB_PRIMARYKEY>
+```
 
 ![](https://user-images.githubusercontent.com/65826354/183737683-d867a786-5378-4e74-a3bc-9957b5b2e225.png)
 
@@ -151,7 +181,7 @@ You can also change the name from "Davis M" to "Davis Mike" the same way and see
 
 ### Login again to see the changes.
 
-Inside the web application, navigate to the "Profile" section and click on "Logout".
+Inside the web application, click on "Logout".
 
 ![](https://user-images.githubusercontent.com/65826354/183737732-30460217-a4d6-477c-9d1c-c7f53781505e.png)
 
@@ -169,9 +199,18 @@ We successfully accessed the database and escalated our privileges.
 
 ### Open VSCode and install the Azure Storage extension.
 
+Azure Storage extension is used to perform the following operations.
+
+-   Explore/Create/Delete Blob Containers, File Shares, Queues, Tables, and Storage Accounts
+
+-   Create, Edit, and Delete Block Blobs and Files
+
+-   Upload and Download Blobs, Files, and Folders
+
 ![](https://user-images.githubusercontent.com/65826354/183737753-a716f0f2-e80c-43dd-8280-0e95c641b22b.png)
 
-### Configure the Azure Storage Account with our local machine.
+### Configure the Azure Storage Account with your local machine.
+
 
 Click on the "Attached Storage Accounts" and enter the connection string.
 
@@ -189,7 +228,7 @@ We successfully have configured the Azure Storage Account with our local machine
 
 ### Exploit the Web Application.
 
-You can download the source code by exploring the file system as shown in the images below and whatnot!
+You can download the source code by exploring the file system as shown in the images below.
 
 ![](https://user-images.githubusercontent.com/65826354/183737793-fc277da3-ecee-4fa2-b153-938575cf43e8.png)
 
