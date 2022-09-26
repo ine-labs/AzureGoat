@@ -86,7 +86,7 @@ workflow Get-AzureVM
     Disable-AzContextAutosave -Scope Process
     $AzureContext = (Connect-Azaccount -Identity -AccountId <Identity-Client-ID>).context
     $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
-    New-AzRoleAssignmnet -RoleDefinitionName "Owner" -ObjectId <VM-Object-ID> -resourceGroupName <ResourceGroup Name>
+    New-AzRoleAssignment -RoleDefinitionName "Owner" -ObjectId <VM-Object-ID> -resourceGroupName <ResourceGroup Name>
 }
 ```
 
