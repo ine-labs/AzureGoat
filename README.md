@@ -145,7 +145,7 @@ You should have received a copy of the GNU General Public License along with thi
 # Sister Projects
 
 - [AWSGoat](https://github.com/ine-labs/AWSGoat)
-- GCPSheep (Coming Soon)
+- [GCPGoat] (https://github.com/ine-labs/GCPGoat)
 - [PA Toolkit (Pentester Academy Wireshark Toolkit)](https://github.com/pentesteracademy/patoolkit)
 - [ReconPal: Leveraging NLP for Infosec](https://github.com/pentesteracademy/reconpal) 
 - [VoIPShark: Open Source VoIP Analysis Platform](https://github.com/pentesteracademy/voipshark)
