@@ -6,7 +6,7 @@ Compromising an organization's cloud infrastructure is like sitting on a gold mi
 
 AzureGoat is a vulnerable by design infrastructure on Azure featuring the latest released OWASP Top 10 web application security risks (2021) and other misconfiguration based on services such as App Functions, CosmosDB, Storage Accounts, Automation and Identities. AzureGoat mimics real-world infrastructure but with added vulnerabilities. It features multiple escalation paths and is focused on a black-box approach.
 
-AzureGoat uses IaC (Terraform) to deploy the vulnerable cloud infrastructure on user's personal Azure account. This gives use complete control on code, infrastucture and environment. Usinf AzureGoat, the user can learn/practice:
+AzureGoat uses IaC (Terraform) to deploy the vulnerable cloud infrastructure on the user's Azure account. This gives the user complete control over code, infrastructure, and environment. Using AzureGoat, the user can learn/practice:
 - Cloud Pentesting/Red-teaming
 - Auditing IaC
 - Secure Coding
