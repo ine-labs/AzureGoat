@@ -90,13 +90,17 @@ resource "azurerm_storage_container" "storage_container" {
     container_access_type = "blob"
 }
 
+locals {
+  now = timestamp()
+  sasExpiry = timeadd(local.now, "240h")
+  date_now = formatdate("YYYY-MM-DD", local.now)
+  date_br = formatdate("YYYY-MM-DD", local.sasExpiry)
+}
 data "azurerm_storage_account_blob_container_sas" "storage_account_blob_container_sas" {
   connection_string = azurerm_storage_account.storage_account.primary_connection_string
   container_name    = azurerm_storage_container.storage_container.name
-
-  start = "2022-01-01T00:00:00Z"
-  expiry = "2023-01-01T00:00:00Z"
-
+  start  = "${local.date_now}"
+  expiry = "${local.date_br}"
   permissions {
     read   = true
     add    = true
@@ -106,6 +110,7 @@ data "azurerm_storage_account_blob_container_sas" "storage_account_blob_containe
     list   = false
   }
 }
+
 
 resource "null_resource" "env_replace" {
   provisioner "local-exec" {
@@ -579,5 +584,7 @@ resource "azurerm_storage_blob" "config_update_vm" {
   depends_on = [null_resource.file_replacement_vm_ip]
 }
   
-
+output "Target_URL"{
+  value = "https://${azurerm_function_app.function_app_front.name}.azurewebsites.net"
+}
     

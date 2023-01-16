@@ -48,7 +48,7 @@ Open the developer tools console and enter the URL of the image as mentioned bel
 **Payload:**
 
 ```
-file:///etc/passwd/
+file:///etc/passwd
 ```
 
 The /etc/passwd file is the most important file in Linux operating system. This file stores essential information about the users on the system. Getting this file as a response will confirm the SSRF vulnerability.
@@ -70,7 +70,7 @@ After the successful download of file, you will find that the file is in .png fo
 
 ### Open the terminal to display the data.
 
-Open the terminal and view the content of the ``/etc/passwd/`` file.
+Open the terminal and view the content of the ``/etc/passwd`` file.
 
 **Command:**
 
@@ -88,7 +88,7 @@ cat 20220808114951907112.png
 
 ![](https://user-images.githubusercontent.com/65826354/183737600-a5c3f93e-6304-4286-b1a7-93b6fb32e1c2.png)
 
-We successfully got the ``/etc/passwd/`` file.
+We successfully got the ``/etc/passwd`` file.
 
 ### Now, we will try to fetch the */local.settings.json* file.
 
