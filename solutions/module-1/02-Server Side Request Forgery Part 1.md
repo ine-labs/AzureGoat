@@ -29,7 +29,7 @@ In the "Enter URL of image" field, write down the below-mentioned payload.
 **Payload:**
 
 ```
-file:///etc/passwd/
+file:///etc/passwd
 ```
 
 The /etc/passwd file is a critical file for the Linux operating system. This file stores essential information about the users on the system. Getting this file from the execution environment as a response will confirm the SSRF vulnerability.
@@ -45,7 +45,7 @@ At the bottom, you will get a notification that "URL File uploaded successfully"
 
 ### Step 3: Download the data and try to open it.
 
-To download the data of the */etc/passwd/* file, visit the copied URL (from Step 3). One file will get downloaded.
+To download the data of the */etc/passwd* file, visit the copied URL (from Step 3). One file will get downloaded.
 
 After the successful download of data, you will find that the data is in .png format.
 
@@ -54,7 +54,7 @@ After the successful download of data, you will find that the data is in .png fo
 
 ### Step 4: Open the terminal to display the data.
 
-Open the terminal and run the below-mentioned command to display the content of the */etc/passwd/* file.
+Open the terminal and run the below-mentioned command to display the content of the */etc/passwd* file.
 
 **Command:**
 
@@ -70,7 +70,7 @@ cat 20220713101033144525.png
 ```
 ![](https://user-images.githubusercontent.com/65826354/183736959-54984f43-ec62-4735-aa34-df78ff42459a.png)
 
-### Step 5: Let's try to fetch */proc/self/environ/* file.
+### Step 5: Let's try to fetch */proc/self/environ* file.
 
 <!-- 
 ![](https://user-images.githubusercontent.com/65826354/183736970-75aa3899-7caa-4e66-a435-c68c818356d8.png) -->
@@ -82,7 +82,7 @@ Open the developer tools console and enter the URL of the image as mentioned bel
 **Payload:**
 
 ```
-file:///proc/self/environ/
+file:///proc/self/environ
 ```
 
 The file located under /proc/self/environ contains several environment variables such as function worker runtime, container image URL, and more. These are the environment variables that are attached to this function app to get this web application up and running.
@@ -97,7 +97,7 @@ To download the data of the *proc/self/environ/* file, visit the copied URL (cop
 
 ![](https://user-images.githubusercontent.com/65826354/183736988-e44f051c-3738-4333-a1fe-4bbc63ce17cf.png)
 
-Open the terminal and run the below-mentioned command to display the content of the *proc/self/environ/* file.
+Open the terminal and run the below-mentioned command to display the content of the *proc/self/environ* file.
 
 **Command:**
 
@@ -115,4 +115,4 @@ cat 20220713112623309267.png
 ![](https://user-images.githubusercontent.com/65826354/183736998-4b64976d-dc81-4c26-95c4-348ef5bd64e2.png)
 
 
-***Congrats! We successfully performed the SSRF attack and fetched the data of the proc/self/environ/ file.***
+***Congrats! We successfully performed the SSRF attack and fetched the data of the proc/self/environ file.***
