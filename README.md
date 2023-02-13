@@ -104,7 +104,7 @@ Sanjeev Mahunta, Software Engineer (Cloud), INE <smahunta@ine.com>
 
 # Solutions
 
-The manuals are available in the [solutions](solutions/) directory 
+The offensive manuals are available in the [attack-manuals](attack-manuals/) directory, and the defensive manuals are available in the [defense-manuals](defense-manuals/) directory. 
 
 Module 1 Exploitation Videos: https://www.youtube.com/playlist?list=PLcIpBb4raSZGdYHKpqIu5Boc2ziga4oGY 
 
