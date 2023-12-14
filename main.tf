@@ -18,12 +18,12 @@ provider "azurerm" {
 
 
 variable "resource_group" {
-  default = "azuregoat_app"
+  default = "azuregoat_app_rga"
 }
 
 variable "location" {
   type    = string
-  default = "eastus"
+  default = "polandcentral"
 }
 
 
