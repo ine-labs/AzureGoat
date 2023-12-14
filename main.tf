@@ -19,6 +19,7 @@ provider "azurerm" {
 
 variable "resource_group" {
   default = "azuregoat_app_rga"
+#  default = "azuregoat_app"
 }
 
 variable "location" {
