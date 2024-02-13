@@ -16,7 +16,7 @@ provider "azurerm" {
   features {}
 }
 
-
+# comment
 variable "resource_group" {
   default = "azuregoat_app"
 }
@@ -25,7 +25,7 @@ variable "location" {
   type = string
   default = "eastus"
 }
- 
+
 
 resource "azurerm_cosmosdb_account" "db" {
   name                = "ine-cosmos-db-data-${random_id.randomId.dec}"
