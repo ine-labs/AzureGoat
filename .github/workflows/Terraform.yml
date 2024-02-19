@@ -22,10 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
 
-defaults:
-  run:
-    shell: bash
-    working-directory: "./terraform"
+    defaults:
+      run:
+        shell: bash
+
     
     steps:
 
@@ -40,9 +40,8 @@ defaults:
   
     - name: Terraform Plan
     run: terraform plan -no-color
-      continue-on-error: true
-  
-  - name: Terraform Apply
+     
+    - name: Terraform Apply
     run: terraform apply -auto-approve
-    continue-on-error: true
+    
 
