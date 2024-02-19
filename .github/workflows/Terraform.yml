@@ -8,29 +8,41 @@ on:
   push:
     branches: [ "master" ]
   pull_request:
-    branches: [ "master" ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+ #   branches: [ "master" ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  terraform:
+    name: 'Terraform'
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
     runs-on: ubuntu-latest
+    environment: production
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+defaults:
+  run:
+    shell: bash
+    working-directory: "./terraform"
+    
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+    - name: Checkout
+    - uses: actions/checkout@v4
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Validate
+    run: terraform validate -no-color
+  
+    - name: Terraform Plan
+    run: terraform plan -no-color
+      continue-on-error: true
+  
+  - name: Terraform Apply
+    run: terraform apply -auto-approve
+    continue-on-error: true
+
