@@ -23,6 +23,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Run yor action
+      uses: bridgecrewio/yor-action@main
+      
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
       with:
@@ -42,3 +45,5 @@ jobs:
 
     - name: Terraform Apply
       run: terraform apply -auto-approve
+
+
