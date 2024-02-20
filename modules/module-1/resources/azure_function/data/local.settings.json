@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "JWT_SECRET" :"T2BYL6#]zc>Byuzu",
+    "AZ_DB_ENDPOINT" :"AZ_DB_ENDPOINT_REPLACE",
+    "AZ_DB_PRIMARYKEY" :"AZ_DB_PRIMARYKEY_REPLACE",
+    "CON_STR" :"CON_STR_REPLACE",
+    "CONTAINER_NAME" :"CONTAINER_NAME_REPLACE"
+  }
+}
