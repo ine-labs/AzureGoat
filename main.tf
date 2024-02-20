@@ -16,7 +16,7 @@ provider "azurerm" {
   features {}
 }
 
-# comment nsasdsalkjdflkjdlkjdskl
+# comment nsasdsalkjdflkjdlkjdskldddsd
 variable "resource_group" {
   default = "azuregoat_app"
 }
