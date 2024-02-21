@@ -16,7 +16,7 @@ provider "azurerm" {
   features {}
 }
 
-
+# ds
 variable "resource_group" {
   default = "azuregoat_app"
 }
