@@ -205,7 +205,7 @@ resource "azurerm_function_app" "function_app" {
   }
 }
 
-
+#
 # Generate random text for a unique storage account name
 resource "random_id" "randomId" {
   keepers = {
