@@ -49,8 +49,15 @@ resource "azurerm_cosmosdb_account" "db" {
     failover_priority = 0
   }
   tags = {
-    yor_name  = "db"
-    yor_trace = "a945caab-bf5e-4d3d-9431-774da2e33a55"
+    yor_name             = "db"
+    yor_trace            = "a945caab-bf5e-4d3d-9431-774da2e33a55"
+    git_commit           = "11b0303b13530745be44d05bf48019b6960ee216"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 
@@ -89,8 +96,15 @@ resource "azurerm_storage_account" "storage_account" {
     }
   }
   tags = {
-    yor_name  = "storage_account"
-    yor_trace = "8963a46b-3d91-4796-bcc0-dc3d63238399"
+    yor_name             = "storage_account"
+    yor_trace            = "8963a46b-3d91-4796-bcc0-dc3d63238399"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 
@@ -168,8 +182,15 @@ resource "azurerm_app_service_plan" "app_service_plan" {
     size = "Y1"
   }
   tags = {
-    yor_name  = "app_service_plan"
-    yor_trace = "c0955712-7a5c-49a1-8cb3-cbb81a040571"
+    yor_name             = "app_service_plan"
+    yor_trace            = "c0955712-7a5c-49a1-8cb3-cbb81a040571"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 
@@ -200,8 +221,15 @@ resource "azurerm_function_app" "function_app" {
   version                    = "~3"
   depends_on                 = [azurerm_cosmosdb_account.db, azurerm_storage_account.storage_account, null_resource.env_replace]
   tags = {
-    yor_name  = "function_app"
-    yor_trace = "e4f2dc49-ea4e-42c0-8eba-f7ba03e241c0"
+    yor_name             = "function_app"
+    yor_trace            = "e4f2dc49-ea4e-42c0-8eba-f7ba03e241c0"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 
@@ -333,8 +361,15 @@ resource "azurerm_network_security_group" "net_sg" {
     destination_address_prefix = "*"
   }
   tags = {
-    yor_name  = "net_sg"
-    yor_trace = "589e45f6-c3f0-4f9d-b5ce-4b8428933a54"
+    yor_name             = "net_sg"
+    yor_trace            = "589e45f6-c3f0-4f9d-b5ce-4b8428933a54"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 
@@ -346,8 +381,15 @@ resource "azurerm_virtual_network" "vNet" {
   location            = var.location
   resource_group_name = var.resource_group
   tags = {
-    yor_name  = "vNet"
-    yor_trace = "8a552080-7a40-4eec-8e6e-89f6f8b7a4dd"
+    yor_name             = "vNet"
+    yor_trace            = "8a552080-7a40-4eec-8e6e-89f6f8b7a4dd"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 resource "azurerm_subnet" "vNet_subnet" {
@@ -370,8 +412,15 @@ resource "azurerm_public_ip" "VM_PublicIP" {
   domain_name_label       = lower("developervm-${random_id.randomId.dec}")
   sku                     = "Basic"
   tags = {
-    yor_name  = "VM_PublicIP"
-    yor_trace = "5d424018-e0e9-4c5f-a609-d93bae4f562a"
+    yor_name             = "VM_PublicIP"
+    yor_trace            = "5d424018-e0e9-4c5f-a609-d93bae4f562a"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
   ip_version = "IPv4"
 }
@@ -399,8 +448,15 @@ resource "azurerm_network_interface" "net_int" {
     azurerm_subnet.vNet_subnet
   ]
   tags = {
-    yor_name  = "net_int"
-    yor_trace = "31358932-7431-42b4-a657-16e8991eb216"
+    yor_name             = "net_int"
+    yor_trace            = "31358932-7431-42b4-a657-16e8991eb216"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 
@@ -453,8 +509,15 @@ resource "azurerm_virtual_machine" "dev-vm" {
   ]
 
   tags = {
-    yor_name  = "dev-vm"
-    yor_trace = "ba79fe3f-bb2c-4714-ae1c-dfaf4916ee95"
+    yor_name             = "dev-vm"
+    yor_trace            = "ba79fe3f-bb2c-4714-ae1c-dfaf4916ee95"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 
@@ -474,8 +537,15 @@ resource "azurerm_virtual_machine_extension" "test" {
 SETTINGS
 depends_on = [null_resource.file_replacement_upload, azurerm_storage_blob.app_files_prod]
 tags = {
-  yor_name  = "test"
-  yor_trace = "506f821a-e731-4a72-8f5e-130d8eba046a"
+  yor_name             = "test"
+  yor_trace            = "506f821a-e731-4a72-8f5e-130d8eba046a"
+  git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+  git_file             = "main.tf"
+  git_last_modified_at = "2024-02-20 03:18:38"
+  git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+  git_modifiers        = "155748033+danpaloalto"
+  git_org              = "danpaloalto"
+  git_repo             = "AzureGoat"
 }
 }
 
@@ -509,8 +579,15 @@ resource "azurerm_user_assigned_identity" "user_id" {
 
   name = "user-assigned-id${random_id.randomId.dec}"
   tags = {
-    yor_name  = "user_id"
-    yor_trace = "18f84da1-6ebf-40be-90ca-da6ca6f33d7e"
+    yor_name             = "user_id"
+    yor_trace            = "18f84da1-6ebf-40be-90ca-da6ca6f33d7e"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 
@@ -525,9 +602,16 @@ resource "azurerm_automation_account" "dev_automation_account_test" {
   }
 
   tags = {
-    environment = "development"
-    yor_name    = "dev_automation_account_test"
-    yor_trace   = "0782b706-5ac3-48bc-bd81-a9ac5a1c99e2"
+    environment          = "development"
+    yor_name             = "dev_automation_account_test"
+    yor_trace            = "0782b706-5ac3-48bc-bd81-a9ac5a1c99e2"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 
@@ -558,8 +642,15 @@ resource "azurerm_automation_runbook" "dev_automation_runbook" {
   runbook_type            = "PowerShellWorkflow"
   content                 = data.local_file.runbook_file.content
   tags = {
-    yor_name  = "dev_automation_runbook"
-    yor_trace = "881859ac-f2f5-4a26-9cb1-f66916cd9b6b"
+    yor_name             = "dev_automation_runbook"
+    yor_trace            = "881859ac-f2f5-4a26-9cb1-f66916cd9b6b"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 
@@ -603,8 +694,15 @@ resource "azurerm_function_app" "function_app_front" {
   version                    = "~3"
   depends_on                 = [null_resource.file_replacement_upload]
   tags = {
-    yor_name  = "function_app_front"
-    yor_trace = "d261e385-45b9-40da-8be9-c698c82ae996"
+    yor_name             = "function_app_front"
+    yor_trace            = "d261e385-45b9-40da-8be9-c698c82ae996"
+    git_commit           = "96328179d381edae7e4600a81a7f46a3c0bd314e"
+    git_file             = "main.tf"
+    git_last_modified_at = "2024-02-20 03:18:38"
+    git_last_modified_by = "155748033+danpaloalto@users.noreply.github.com"
+    git_modifiers        = "155748033+danpaloalto"
+    git_org              = "danpaloalto"
+    git_repo             = "AzureGoat"
   }
 }
 
