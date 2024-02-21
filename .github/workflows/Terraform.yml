@@ -22,12 +22,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
-    - name: Run yor action
-      uses: bridgecrewio/yor-action@main
       with:
         fetch-depth: 0
-      
+        
+    - name: Run yor action
+      uses: bridgecrewio/yor-action@main
+    
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
       with:
