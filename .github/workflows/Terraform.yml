@@ -25,6 +25,8 @@ jobs:
 
     - name: Run yor action
       uses: bridgecrewio/yor-action@main
+      with:
+        fetch-depth: 0
       
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v1
