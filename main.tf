@@ -16,7 +16,7 @@ provider "azurerm" {
   features {}
 }
 
-# ds
+# sassasds
 variable "resource_group" {
   default = "azuregoat_app"
 }
@@ -33,6 +33,7 @@ resource "azurerm_cosmosdb_account" "db" {
   resource_group_name = var.resource_group
   offer_type          = "Standard"
   kind                = "GlobalDocumentDB"
+
 
   consistency_policy {
     consistency_level       = "BoundedStaleness"
@@ -113,6 +114,12 @@ resource "azurerm_storage_container" "storage_container" {
   storage_account_name  = azurerm_storage_account.storage_account.name
   container_access_type = "blob"
 }
+resource "azurerm_storage_container1" "storage_container" {
+  name                  = "appazgoat${random_id.randomId.dec}-storage-container1"
+  storage_account_name  = azurerm_storage_account.storage_account.name
+  container_access_type = "blob"
+}
+
 
 locals {
   now       = timestamp()
