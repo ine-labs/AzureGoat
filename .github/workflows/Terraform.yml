@@ -1,0 +1,54 @@
+name: Terraform Azure Deployment
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  terraform:
+    name: Terraform Deployment
+    runs-on: ubuntu-latest
+
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.ARM_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        
+    - name: Run yor action
+      uses: bridgecrewio/yor-action@main
+    
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.0.0
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Azure Login
+      run: az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $ARM_TENANT_ID
+
+    - name: Set Azure Subscription
+      run: az account set --subscription $ARM_SUBSCRIPTION_ID
+
+    - name: Terraform Plan
+      run: terraform plan
+    
+    - name: Run yor action
+      uses: bridgecrewio/yor-action@main
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+
+
