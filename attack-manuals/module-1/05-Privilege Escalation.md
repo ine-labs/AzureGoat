@@ -89,12 +89,13 @@ We found a PowerShellWorkFlow based runbook.
 This code will assign the **Owner** role to the Virtual Machine.
 
 ```
-workflow Get-AzureVM
-{
-    Disable-AzContextAutosave -Scope Process
-    $AzureContext = (Connect-Azaccount -Identity -AccountId <Identity-Client-ID>).context
-    $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
-    New-AzRoleAssignment -RoleDefinitionName "Owner" -ObjectId <VM-Object-ID> -resourceGroupName <ResourceGroup Name>
+workflow Get-AzureVM {
+    inlineScript {
+        Disable-AzContextAutosave -Scope Process
+        $AzureContext = (Connect-Azaccount -Identity -AccountId <Identity-Client-ID>).context
+        $AzureContext = Set-AzContext -SubscriptionName $AzureContext.Subscription -DefaultProfile $AzureContext
+        New-AzRoleAssignment -RoleDefinitionName "Owner" -ObjectId <VM-Object-ID> -resourceGroupName <ResourceGroup Name>
+    }
 }
 ```
 Please update the following placeholders with the appropriate values:
@@ -102,7 +103,7 @@ Please update the following placeholders with the appropriate values:
 - Replace `<VM-Object-ID>` with the Principal ID of your Virtual Machine.
 - Replace `<ResourceGroup Name>` with the name of your Resource Group.
 
-![](https://user-images.githubusercontent.com/42687376/223097159-55fe76c7-bfcb-457f-9cb7-a56514e96681.png)
+![](https://github.com/user-attachments/assets/de0b1df4-6153-4392-997b-a450f872cb9e)
 
 **Step 8:** Replace, publish and re-start the runbook.
 
