@@ -590,4 +590,4 @@ output "Target_URL"{
   value = "https://${azurerm_function_app.function_app_front.name}.azurewebsites.net"
 }
     
-## Change to trigger scan
+## Change to trigger scan, another change to files
